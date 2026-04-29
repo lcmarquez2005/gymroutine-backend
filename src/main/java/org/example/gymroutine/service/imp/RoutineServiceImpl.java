@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.example.gymroutine.mapper.RoutineMapper;
+//...
+
 @Service
 @RequiredArgsConstructor
 public class RoutineServiceImpl implements RoutineService {
@@ -24,6 +27,7 @@ public class RoutineServiceImpl implements RoutineService {
     private final RoutineRepository routineRepository;
     private final UserRepository userRepository;
     private final ExerciseRepository exerciseRepository;
+    private final RoutineMapper routineMapper;
 
     private UserEntity getCurrentUser() {
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
@@ -138,28 +142,6 @@ public class RoutineServiceImpl implements RoutineService {
     }
 
     private RoutineDTO mapToDTO(RoutineEntity entity) {
-        List<ExerciseDTO> exercises = entity.getExercises().stream().map(re -> 
-            ExerciseDTO.builder()
-                .id(re.getExercise().getId())
-                .name(re.getExercise().getName())
-                .muscleGroup(re.getExercise().getMuscleGroup())
-                .restTime(re.getRestTime())
-                .sets(re.getSets().stream().map(rs -> 
-                    SetDTO.builder()
-                        .id(rs.getId())
-                        .reps(rs.getReps())
-                        .weight(rs.getWeight())
-                        .build()
-                ).collect(Collectors.toList()))
-                .build()
-        ).collect(Collectors.toList());
-
-        return RoutineDTO.builder()
-                .id(entity.getId())
-                .name(entity.getName())
-                .targetMuscleGroup(entity.getTargetMuscleGroup())
-                .assignedDays(new ArrayList<>(entity.getAssignedDays()))
-                .exercises(exercises)
-                .build();
+        return routineMapper.toDto(entity);
     }
 }

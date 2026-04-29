@@ -26,12 +26,12 @@ Este documento detalla el estado actual del proyecto, las fases completadas y el
 - [x] Endpoints para CRUD de Rutinas (`GET`, `POST`, `PUT`, `DELETE` en `/api/v1/routines`).
 - [x] Validaciones de pertenencia (un usuario solo puede ver/modificar sus rutinas).
 
-### 📅 Fase 4: Historial y Sesiones de Entrenamiento
-- [ ] Entidades de Sesión (`WorkoutSessionEntity`, `WorkoutExerciseEntity`, `WorkoutSetEntity`).
-- [ ] Endpoint `POST /api/v1/workouts` (Guardado con `@Transactional`).
-- [ ] Lógica de validación y cálculo de volumen real en el backend.
+### ✅ Fase 4: Historial y Sesiones de Entrenamiento (Completado)
+- [x] Entidades de Sesión (`WorkoutSessionEntity`, `WorkoutExerciseEntity`, `WorkoutSetEntity`).
+- [x] Endpoint `POST /api/v1/workouts` (Guardado con `@Transactional`).
+- [x] Lógica de validación y cálculo de volumen real en el backend.
 
-### 📅 Fase 5: Optimizaciones y Calidad
-- [ ] Integración de MapStruct para reducir código boilerplate en los DTOs.
-- [ ] Manejo Global de Errores mediante `@RestControllerAdvice`.
-- [ ] Despliegue o testing final.
+### ✅ Fase 5: Optimizaciones y Calidad (Completado)
+- [x] Integración de MapStruct para reducir código boilerplate en los DTOs.
+- [x] Manejo Global de Errores mediante `@RestControllerAdvice`.
+- [x] Despliegue o testing final.

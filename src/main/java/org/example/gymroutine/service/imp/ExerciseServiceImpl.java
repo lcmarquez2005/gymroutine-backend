@@ -10,35 +10,25 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.example.gymroutine.mapper.ExerciseMapper;
+//...
+
 @Service
 @RequiredArgsConstructor
 public class ExerciseServiceImpl implements ExerciseService {
 
     private final ExerciseRepository exerciseRepository;
+    private final ExerciseMapper exerciseMapper;
 
     @Override
     public List<ExerciseDTO> getAllExercises() {
-        return exerciseRepository.findAll().stream().map(e -> 
-            ExerciseDTO.builder()
-                .id(e.getId())
-                .name(e.getName())
-                .muscleGroup(e.getMuscleGroup())
-                .build()
-        ).collect(Collectors.toList());
+        return exerciseMapper.toDtoList(exerciseRepository.findAll());
     }
 
     @Override
     public ExerciseDTO createExercise(ExerciseDTO request) {
-        ExerciseEntity exercise = ExerciseEntity.builder()
-                .name(request.getName())
-                .muscleGroup(request.getMuscleGroup())
-                .build();
+        ExerciseEntity exercise = exerciseMapper.toEntity(request);
         exercise = exerciseRepository.save(exercise);
-        
-        return ExerciseDTO.builder()
-                .id(exercise.getId())
-                .name(exercise.getName())
-                .muscleGroup(exercise.getMuscleGroup())
-                .build();
+        return exerciseMapper.toDto(exercise);
     }
 }
