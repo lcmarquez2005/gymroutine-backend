@@ -43,4 +43,8 @@ public class RoutineEntity {
         exercises.add(exercise);
         exercise.setRoutine(this);
     }
+
+    @Column(name = "is_favorite")
+    @Builder.Default
+    private Boolean isFavorite = false;
 }

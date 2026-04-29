@@ -20,4 +20,5 @@ public class RoutineDTO {
     private List<String> assignedDays = new ArrayList<>();
     @Builder.Default
     private List<ExerciseDTO> exercises = new ArrayList<>();
+    private Boolean isFavorite;
 }

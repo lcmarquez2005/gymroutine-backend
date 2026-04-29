@@ -54,6 +54,7 @@ public class RoutineServiceImpl implements RoutineService {
                 .targetMuscleGroup(request.getTargetMuscleGroup())
                 .user(getCurrentUser())
                 .assignedDays(new ArrayList<>(request.getAssignedDays() != null ? request.getAssignedDays() : List.of()))
+                .isFavorite(request.getIsFavorite() != null ? request.getIsFavorite() : false)
                 .build();
 
         if (request.getExercises() != null) {
@@ -94,6 +95,9 @@ public class RoutineServiceImpl implements RoutineService {
 
         routine.setName(request.getName());
         routine.setTargetMuscleGroup(request.getTargetMuscleGroup());
+        if (request.getIsFavorite() != null) {
+            routine.setIsFavorite(request.getIsFavorite());
+        }
         routine.getAssignedDays().clear();
         if (request.getAssignedDays() != null) {
             routine.getAssignedDays().addAll(request.getAssignedDays());
@@ -160,6 +164,7 @@ public class RoutineServiceImpl implements RoutineService {
                 .targetMuscleGroup(entity.getTargetMuscleGroup())
                 .assignedDays(new ArrayList<>(entity.getAssignedDays()))
                 .exercises(exercises)
+                .isFavorite(entity.getIsFavorite())
                 .build();
     }
 }
