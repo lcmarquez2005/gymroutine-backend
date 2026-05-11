@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class SetDTO {
     private String id;
+    private String setType;
+    private String targetRepRange;
+    private Float targetWeight;
+    private Integer targetTimeSeconds;
     private Integer reps;
     private Float weight;
     private Boolean completed;

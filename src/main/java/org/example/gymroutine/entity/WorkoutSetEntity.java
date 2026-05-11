@@ -4,21 +4,21 @@ import jakarta.persistence.*;
 import lombok.*;
 
 @Entity
-@Table(name = "routine_sets")
+@Table(name = "workout_sets")
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class RoutineSetEntity {
+public class WorkoutSetEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "routine_exercise_id", nullable = false)
-    private RoutineExerciseEntity routineExercise;
+    @JoinColumn(name = "workout_exercise_id", nullable = false)
+    private WorkoutExerciseEntity workoutExercise;
 
     @Column(name = "set_type", length = 10)
     private String setType;
@@ -31,4 +31,10 @@ public class RoutineSetEntity {
 
     @Column(name = "target_time_seconds")
     private Integer targetTimeSeconds;
+
+    private Integer reps;
+
+    private Float weight;
+
+    private Boolean completed;
 }

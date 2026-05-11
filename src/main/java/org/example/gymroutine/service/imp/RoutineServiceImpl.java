@@ -70,8 +70,10 @@ public class RoutineServiceImpl implements RoutineService {
                 if (exDto.getSets() != null) {
                     for (SetDTO setDto : exDto.getSets()) {
                         RoutineSetEntity rs = RoutineSetEntity.builder()
-                                .reps(setDto.getReps())
-                                .weight(setDto.getWeight())
+                                .setType(setDto.getSetType())
+                                .targetRepRange(setDto.getTargetRepRange())
+                                .targetWeight(setDto.getTargetWeight())
+                                .targetTimeSeconds(setDto.getTargetTimeSeconds())
                                 .build();
                         re.addSet(rs);
                     }
@@ -114,8 +116,10 @@ public class RoutineServiceImpl implements RoutineService {
                 if (exDto.getSets() != null) {
                     for (SetDTO setDto : exDto.getSets()) {
                         RoutineSetEntity rs = RoutineSetEntity.builder()
-                                .reps(setDto.getReps())
-                                .weight(setDto.getWeight())
+                                .setType(setDto.getSetType())
+                                .targetRepRange(setDto.getTargetRepRange())
+                                .targetWeight(setDto.getTargetWeight())
+                                .targetTimeSeconds(setDto.getTargetTimeSeconds())
                                 .build();
                         re.addSet(rs);
                     }
@@ -147,8 +151,10 @@ public class RoutineServiceImpl implements RoutineService {
                 .sets(re.getSets().stream().map(rs -> 
                     SetDTO.builder()
                         .id(rs.getId())
-                        .reps(rs.getReps())
-                        .weight(rs.getWeight())
+                        .setType(rs.getSetType())
+                        .targetRepRange(rs.getTargetRepRange())
+                        .targetWeight(rs.getTargetWeight())
+                        .targetTimeSeconds(rs.getTargetTimeSeconds())
                         .build()
                 ).collect(Collectors.toList()))
                 .build()

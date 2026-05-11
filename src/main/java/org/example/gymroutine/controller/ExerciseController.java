@@ -24,4 +24,10 @@ public class ExerciseController {
     public ResponseEntity<ExerciseDTO> create(@RequestBody ExerciseDTO request) {
         return ResponseEntity.ok(exerciseService.createExercise(request));
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        exerciseService.deleteExercise(id);
+        return ResponseEntity.noContent().build();
+    }
 }

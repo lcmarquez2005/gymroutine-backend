@@ -6,4 +6,5 @@ import java.util.List;
 public interface ExerciseService {
     List<ExerciseDTO> getAllExercises();
     ExerciseDTO createExercise(ExerciseDTO request);
+    void deleteExercise(String id);
 }

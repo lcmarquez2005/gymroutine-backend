@@ -18,7 +18,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     public List<ExerciseDTO> getAllExercises() {
-        return exerciseRepository.findAll().stream().map(e -> 
+        return exerciseRepository.findAllByActiveTrue().stream().map(e -> 
             ExerciseDTO.builder()
                 .id(e.getId())
                 .name(e.getName())
@@ -40,5 +40,13 @@ public class ExerciseServiceImpl implements ExerciseService {
                 .name(exercise.getName())
                 .muscleGroup(exercise.getMuscleGroup())
                 .build();
+    }
+
+    @Override
+    public void deleteExercise(String id) {
+        ExerciseEntity exercise = exerciseRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Exercise not found"));
+        exercise.setActive(false);
+        exerciseRepository.save(exercise);
     }
 }

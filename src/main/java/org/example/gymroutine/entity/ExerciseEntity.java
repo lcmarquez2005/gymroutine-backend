@@ -21,4 +21,8 @@ public class ExerciseEntity {
 
     @Column(name = "muscle_group")
     private String muscleGroup;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private Boolean active = true;
 }

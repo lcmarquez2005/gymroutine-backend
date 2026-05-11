@@ -15,6 +15,9 @@ public class ExerciseDTO {
     private String id;
     private String name;
     private String muscleGroup;
+    private Boolean jointPain;
+    private Boolean possibleInjury;
+    private Boolean feelingSick;
     private Integer restTime;
     private List<SetDTO> sets;
 }

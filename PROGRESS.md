@@ -26,12 +26,18 @@ Este documento detalla el estado actual del proyecto, las fases completadas y el
 - [x] Endpoints para CRUD de Rutinas (`GET`, `POST`, `PUT`, `DELETE` en `/api/v1/routines`).
 - [x] Validaciones de pertenencia (un usuario solo puede ver/modificar sus rutinas).
 
-### 📅 Fase 4: Historial y Sesiones de Entrenamiento
-- [ ] Entidades de Sesión (`WorkoutSessionEntity`, `WorkoutExerciseEntity`, `WorkoutSetEntity`).
-- [ ] Endpoint `POST /api/v1/workouts` (Guardado con `@Transactional`).
-- [ ] Lógica de validación y cálculo de volumen real en el backend.
+### ✅ Fase 4: Historial y Sesiones de Entrenamiento (Completado)
+- [x] Entidades de Sesión (`WorkoutSessionEntity`, `WorkoutExerciseEntity`, `WorkoutSetEntity`).
+- [x] Repositorio con paginación nativa (`Page<WorkoutSession>`).
+- [x] Endpoint `POST /api/v1/workouts` (Guardado con `@Transactional`).
+- [x] Endpoint `GET /api/v1/workouts?page=0&size=10` (Historial paginado, ordenado del más reciente).
+- [x] Lógica de recalculo de volumen y sets en el servidor (seguridad antitrampas).
 
 ### 📅 Fase 5: Optimizaciones y Calidad
 - [ ] Integración de MapStruct para reducir código boilerplate en los DTOs.
 - [ ] Manejo Global de Errores mediante `@RestControllerAdvice`.
 - [ ] Despliegue o testing final.
+
+### 📅 Fase 6: Soporte Offline (Frontend)
+- [ ] El **frontend** implementará IndexedDB / LocalStorage para almacenar entrenamientos cuando no haya conexión.
+- [ ] El **frontend** creará una cola de peticiones y enviará las sesiones una por una al recuperar la conexión (`POST /api/v1/workouts`). No se requieren cambios ni endpoints adicionales en el backend.

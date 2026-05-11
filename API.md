@@ -122,6 +122,15 @@ Este documento define la estructura de los endpoints RESTful necesarios para con
 
 ---
 
+## 5. Soporte Offline y Sincronización (Frontend)
+
+La API no requiere endpoints adicionales para soportar el modo sin conexión. La responsabilidad recae enteramente en el cliente (Frontend):
+- **Almacenamiento Local**: Cuando no hay conexión, la app debe guardar los entrenamientos (y otros cambios) en IndexedDB / LocalStorage.
+- **Sincronización**: Al recuperar la conexión a internet, el frontend debe encolar y enviar secuencialmente las peticiones pendientes (ej. múltiples `POST /workouts`) a los endpoints existentes.
+- **Ventaja**: El backend se mantiene simple y la lógica de reintentos se controla visualmente desde la aplicación.
+
+---
+
 ## Modelos de Datos (DTOs Recomendados para Spring Boot)
 
 Asegúrate de que las Entidades (Entities) en Java / Kotlin se mapeen correctamente a estos tipos o crea DTOs (Data Transfer Objects) que respeten esta estructura para evitar problemas de compatibilidad en el cliente:
